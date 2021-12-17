@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addPartFirstView">
+   <children>
+      <Pane layoutX="239.0" layoutY="28.0" prefHeight="344.0" prefWidth="278.0">
+         <children>
+            <Label layoutX="22.0" layoutY="30.0" text="Add Part">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+            </Label>
+            <RadioButton layoutX="109.0" layoutY="33.0" mnemonicParsing="false" text="In-House">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="187.0" layoutY="32.0" mnemonicParsing="false" text="Outsourced">
+               <font>
+                  <Font size="10.0" />
+               </font></RadioButton>
+            <Label layoutX="49.0" layoutY="65.0" text="ID" />
+            <Label layoutX="52.0" layoutY="109.0" text="Name" />
+            <Label layoutX="53.0" layoutY="152.0" text="Inv" />
+            <Label layoutX="57.0" layoutY="192.0" text="Price/Cost" />
+            <Label layoutX="41.0" layoutY="231.0" text="Max" />
+            <Label layoutX="144.0" layoutY="231.0" text="Min" />
+            <Label layoutX="24.0" layoutY="269.0" text="Company Name" />
+            <Button layoutX="114.0" layoutY="305.0" mnemonicParsing="false" text="Save" />
+            <Button fx:id="mainView" layoutX="196.0" layoutY="305.0" mnemonicParsing="false" onAction="#toMainView" text="Cancel" />
+            <TextField layoutX="100.0" layoutY="61.0" prefHeight="0.0" prefWidth="149.0" />
+            <TextField layoutX="100.0" layoutY="105.0" prefHeight="25.0" prefWidth="149.0" />
+            <TextField layoutX="100.0" layoutY="148.0" />
+            <TextField layoutX="129.0" layoutY="188.0" prefHeight="25.0" prefWidth="116.0" />
+            <TextField layoutX="127.0" layoutY="265.0" prefHeight="25.0" prefWidth="139.0" />
+            <TextField layoutX="70.0" layoutY="227.0" prefHeight="25.0" prefWidth="71.0" />
+            <TextField layoutX="170.0" layoutY="227.0" prefHeight="25.0" prefWidth="92.0" />
+         </children>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>
