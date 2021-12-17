@@ -17,7 +17,7 @@
                   <Bloom />
                </effect>
             </Label>
-            <RadioButton layoutX="109.0" layoutY="33.0" mnemonicParsing="false" text="In-House">
+            <RadioButton layoutX="109.0" layoutY="33.0" mnemonicParsing="false" selected="true" text="In-House">
                <font>
                   <Font size="10.0" />
                </font>

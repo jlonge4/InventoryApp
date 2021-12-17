@@ -22,7 +22,7 @@
                   <Font size="10.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="187.0" layoutY="32.0" mnemonicParsing="false" text="Outsourced">
+            <RadioButton layoutX="187.0" layoutY="32.0" mnemonicParsing="false" selected="true" text="Outsourced">
                <font>
                   <Font size="10.0" />
                </font></RadioButton>
