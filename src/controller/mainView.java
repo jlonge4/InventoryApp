@@ -45,6 +45,15 @@ public class mainView implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void toModifyPartFirstView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/modifyPartFirstView.fxml"));
+        Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 800, 600);
+        stage.setTitle("modifyPartFirstView");
+        stage.setScene(scene);
+        stage.show();
+    }
     public void exitProgram(ActionEvent actionEvent) throws IOException {
         System.exit(0);
     }
