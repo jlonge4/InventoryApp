@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="385.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addPartFirstView">
+<AnchorPane prefHeight="385.0" prefWidth="315.0" style="-fx-border-color: black; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addPartFirstView">
    <children>
-      <Pane layoutX="39.0" layoutY="21.0" prefHeight="344.0" prefWidth="278.0" style="-fx-border-color: gray; -fx-border-radius: 40;">
+      <Pane layoutX="19.0" layoutY="21.0" prefHeight="344.0" prefWidth="278.0" style="-fx-border-color: gray; -fx-border-radius: 40;">
          <children>
             <Label layoutX="22.0" layoutY="30.0" text="Add Part">
                <font>

@@ -16,10 +16,15 @@ public class Inventory {
         allProducts.add(Product);
     }
 
-    public static Part lookupPart(int ID) {
-//      iterate through allParts. to return by ID
-        return p;
-    }
+//    public static Part lookupPart(int ID) {
+////      iterate through allParts. to return by ID
+//        return p;
+//    }
+
+    //    public static Product lookupProduct(int ID) {
+////      iterate through allProducts. to return by ID
+//        return p;
+//    }
 
 
     public static ObservableList<Part> getAllParts() {

@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="407.0" prefWidth="796.0" style="-fx-border-radius: 40; -fx-border-color: black; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mainView">
+<AnchorPane prefHeight="407.0" prefWidth="796.0" style="-fx-border-color: black; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mainView">
    <children>
-      <Pane layoutX="14.0" layoutY="65.0" prefHeight="295.0" prefWidth="386.0">
+      <Pane layoutX="14.0" layoutY="65.0" prefHeight="295.0" prefWidth="386.0" style="-fx-border-radius: 7; -fx-border-color: black; -fx-border-width: 1;">
          <children>
             <Label layoutX="21.0" layoutY="48.0" text="Parts">
                <font>
@@ -16,7 +16,7 @@
             <Button fx:id="addPartFirstView" layoutX="186.0" layoutY="227.0" mnemonicParsing="false" onAction="#toAddPartFirstView" text="Add" />
             <Button fx:id="toMOoifyPartFV" layoutX="241.0" layoutY="227.0" mnemonicParsing="false" onAction="#toModifyPartFirstView" text="Modify" />
             <Button layoutX="308.0" layoutY="227.0" mnemonicParsing="false" text="Delete" />
-            <TableView fx:id="dataTable" layoutX="13.0" layoutY="79.0" prefHeight="141.0" prefWidth="360.0">
+            <TableView fx:id="PartsTable" layoutX="13.0" layoutY="79.0" prefHeight="141.0" prefWidth="360.0">
               <columns>
                 <TableColumn fx:id="idColumn" prefWidth="47.0" text="Part ID" />
                 <TableColumn fx:id="partNameColumn" prefWidth="76.0" text="Part Name" />
@@ -38,7 +38,7 @@
             </Lighting>
          </effect>
       </Pane>
-      <Pane layoutX="404.0" layoutY="65.0" prefHeight="295.0" prefWidth="379.0">
+      <Pane layoutX="404.0" layoutY="65.0" prefHeight="295.0" prefWidth="379.0" style="-fx-border-color: black; -fx-border-radius: 7;">
          <children>
             <Label layoutX="14.0" layoutY="48.0" text="Products">
                <font>
@@ -49,12 +49,12 @@
             <Button layoutX="257.0" layoutY="232.0" mnemonicParsing="false" text="Delete" />
             <Button layoutX="114.0" layoutY="46.0" mnemonicParsing="false" text="Search" />
             <TextField layoutX="175.0" layoutY="46.0" />
-            <TableView layoutX="4.0" layoutY="79.0" prefHeight="141.0" prefWidth="368.0">
+            <TableView fx:id="ProductsTable" layoutX="4.0" layoutY="79.0" prefHeight="141.0" prefWidth="368.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Product ID" />
-                  <TableColumn prefWidth="100.0" text="Product Name" />
-                  <TableColumn prefWidth="96.0" text="Inventory Level" />
-                <TableColumn prefWidth="96.0" text="Price Per Unit" />
+                <TableColumn fx:id="prodIDcol" prefWidth="75.0" text="Product ID" />
+                  <TableColumn fx:id="prodNameCol" prefWidth="100.0" text="Product Name" />
+                  <TableColumn fx:id="prodInvCol" prefWidth="96.0" text="Inventory Level" />
+                <TableColumn fx:id="prodPriceCol" prefWidth="96.0" text="Price Per Unit" />
               </columns>
             </TableView>
          </children>
