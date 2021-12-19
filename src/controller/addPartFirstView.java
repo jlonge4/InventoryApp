@@ -6,7 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
+import sun.text.DictionaryBasedBreakIterator;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,9 +19,14 @@ import java.util.ResourceBundle;
 public class addPartFirstView implements Initializable {
 
 
+    public RadioButton inhouse;
+    public RadioButton outsourced;
+    public Label companyName;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("I am initialized");
+
     }
 
     public void toMainView(ActionEvent actionEvent) throws IOException {
@@ -26,5 +36,27 @@ public class addPartFirstView implements Initializable {
         stage.setTitle("mainView");
         stage.setScene(scene);
         stage.show();
+    }
+    public void toAddPartSecondView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/addPartSecondView.fxml"));
+        Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 800, 600);
+        stage.setTitle("addPartSecondView");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void inhouse(ActionEvent actionEvent) {
+        companyName.setText("Machine ID");
+
+            /*How to test if button is selected*/
+            if (inhouse.isSelected()) {
+                System.out.println(inhouse.isSelected());
+            } else
+            System.out.println(inhouse.isSelected());
+    }
+
+    public void outsourced(ActionEvent actionEvent) {
+        companyName.setText("Company Name");
     }
 }

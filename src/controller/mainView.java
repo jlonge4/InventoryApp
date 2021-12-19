@@ -6,10 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.InhousePart;
 import model.Inventory;
 import model.Part;
+import model.Product;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,13 +21,35 @@ import java.util.ResourceBundle;
 
 public class mainView implements Initializable {
 
+    private static boolean firstTime = true;
+    public TableView dataTable;
+    public TableColumn idColumn;
+    public TableColumn partNameColumn;
+    public TableColumn inventoryColumn;
+    public TableColumn priceColumn;
+
+    private void addTestData() {
+        if (!firstTime) {
+            return;
+        }
+        firstTime = false;
+        Product p = new Product(1,"bolt" , 3.00 , 450 , 0, 100);
+        Inventory.addProduct(p);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("I am initialized");
+        addTestData();
+
+        dataTable.setItems(Inventory.getAllProducts());
+
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("Part ID"));
+        partNameColumn.setCellValueFactory(new PropertyValueFactory<>("Part Name"));
+        inventoryColumn.setCellValueFactory(new PropertyValueFactory<>("Inventory Level"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("Price/Cost per Unit"));
 
 
-    InhousePart p = new InhousePart(1,"bolt" , 3.00 , 450 , 0, 100, true);
-    Inventory.addPart(p);
     }
 
     public void toAddProductView(ActionEvent actionEvent) throws IOException {
@@ -64,4 +90,8 @@ public class mainView implements Initializable {
     public void exitProgram(ActionEvent actionEvent) throws IOException {
         System.exit(0);
     }
+
+
+
+
 }

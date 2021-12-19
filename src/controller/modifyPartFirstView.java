@@ -6,12 +6,19 @@ import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class modifyPartFirstView implements Initializable {
+
+
+    public RadioButton inhouse;
+    public RadioButton outsourced;
+    public Label companyName;
 
 
     @Override
@@ -26,5 +33,13 @@ public class modifyPartFirstView implements Initializable {
         stage.setTitle("mainView");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void inhouse(ActionEvent actionEvent) {
+        companyName.setText("Machine ID");
+    }
+
+    public void outsourced(ActionEvent actionEvent) {
+        companyName.setText("Company Name");
     }
 }
