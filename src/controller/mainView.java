@@ -15,6 +15,7 @@ import model.InhousePart;
 import model.Inventory;
 import model.Part;
 import model.Product;
+import org.w3c.dom.ls.LSOutput;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,12 +36,13 @@ public class mainView implements Initializable {
     public TableColumn prodInvCol;
     public TableColumn prodPriceCol;
     public TableView ProductsTable;
+    
 
 
     private void addTestData() {
-        InhousePart p = new InhousePart(1,"bolt" , 3.00 , 450 , 0, 100, 01);
+        InhousePart p = new InhousePart(1, "bolt", 3.00, 450, 0, 100, 01);
         Inventory.addPart(p);
-        Product z = new Product(1, "saw", 300 , 5 , 10 ,30);
+        Product z = new Product(1, "saw", 300, 5, 10, 30);
         Inventory.addProduct(z);
 
     }
@@ -69,7 +71,7 @@ public class mainView implements Initializable {
 
     public void toAddProductView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/addProductView.fxml"));
-        Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
         stage.setTitle("addProductView");
         stage.setScene(scene);
@@ -78,7 +80,7 @@ public class mainView implements Initializable {
 
     public void toModifyProductView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/modifyProductView.fxml"));
-        Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
         stage.setTitle("modifyProductView");
         stage.setScene(scene);
@@ -87,7 +89,7 @@ public class mainView implements Initializable {
 
     public void toAddPartFirstView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/addPartFirstView.fxml"));
-        Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 325, 400);
         stage.setTitle("addPartFirstView");
         stage.setScene(scene);
@@ -96,17 +98,26 @@ public class mainView implements Initializable {
 
     public void toModifyPartFirstView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/modifyPartFirstView.fxml"));
-        Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 325, 400);
         stage.setTitle("modifyPartFirstView");
         stage.setScene(scene);
         stage.show();
     }
+
     public void exitProgram(ActionEvent actionEvent) throws IOException {
         System.exit(0);
     }
 
+    public void onDeletePart(ActionEvent actionEvent) {
+        Part selectedPart = (Part) PartsTable.getSelectionModel().getSelectedItem();
+        Inventory.deletePart(selectedPart);
+    }
 
+    public void onDeleteProduct(ActionEvent actionEvent) {
+        Product selectedProduct = (Product) ProductsTable.getSelectionModel().getSelectedItem();
+        Inventory.deleteProduct(selectedProduct);
+    }
 
 
 }
