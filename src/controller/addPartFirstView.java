@@ -49,81 +49,53 @@ public class addPartFirstView implements Initializable {
         stage.show();
     }
 
-    public void toAddPartSecondView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/addPartSecondView.fxml"));
-        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        stage.setTitle("addPartSecondView");
-        stage.setScene(scene);
-        stage.show();
-    }
 
     public void inhouse(ActionEvent actionEvent) {
         companyName.setText("Machine ID");
-
-        /*How to test if button is selected*/
-        if (inhouse.isSelected()) {
-            System.out.println(inhouse.isSelected());
-        } else
-            System.out.println(inhouse.isSelected());
     }
 
     public void outsourced(ActionEvent actionEvent) {
         companyName.setText("Company Name");
     }
 
+    public boolean inhouseSelected() {
+        boolean inhouseSelected = true;
+        if (!inhouse.isSelected()) {
+            inhouseSelected = false;
+            System.out.println("inhouse button selected");
+        }
+        System.out.println("machine id selected");
+        return inhouseSelected;
+    }
 
     @FXML
-    void addNewPartForm(ActionEvent event) throws IOException {
-
+    void addNewPartForm(ActionEvent event) throws Exception {
+//    System.out.println(newPartCompName.getText());
         int partId = Integer.parseInt(newID.getText());
         String partName = newPartName.getText();
         int partInv = Integer.parseInt(newPartInv.getText());
-        int partPrice = Integer.parseInt(newPartPrice.getText());
+        double partPrice = Double.parseDouble(newPartPrice.getText());
         int partMin = Integer.parseInt(newPartMin.getText());
         int partMax = Integer.parseInt(newPartMax.getText());
         String partCompName = newPartCompName.getText();
-        int machineID = Integer.parseInt(newPartCompName.getText());
 
 
-        try {
-            if (inhouse.isSelected()) {
-                System.out.println("Part name: " + partName);
-                InhousePart inhousePart = new InhousePart(partId, partName, partInv, partPrice, partMin, partMax, machineID );
-                inhousePart.setId(partId);
-                inhousePart.setName(partName);
-                inhousePart.setPrice(partPrice);
-                inhousePart.setStock(partInv);
-                inhousePart.setMin(partMin);
-                inhousePart.setMax(partMax);
-                inhousePart.setMachineID(1);
-                Inventory.addPart(inhousePart);
-            } else {
-                System.out.println("Part name: " + partName);
-//                OutsourcedPart outPart = new OutsourcedPart();
-//                outPart.setId(1);
-//                outPart.setName(partName);
-//                outPart.setPrice(Double.parseDouble(partPrice));
-//                outPart.setStock(Integer.parseInt(partInv));
-//                outPart.setMin(Integer.parseInt(partMin));
-//                outPart.setMax(Integer.parseInt(partMax));
-//                outPart.setCompanyName(partCompName);
-//                Inventory.addPart(outPart);
-            }
 
-            Parent addPartSave = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));
-            Scene scene = new Scene(addPartSave);
-            Stage window = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            window.setScene(scene);
-            window.show();
-
-    }
-        catch(NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error Adding Part");
-            alert.setContentText("Form contains blank fields.");
-            alert.showAndWait();
+        if (inhouse.isSelected()) {
+            System.out.println("inhouse button selected");
+            int machineID = Integer.parseInt(newPartCompName.getText());
+            Part inhouse = new InhousePart(partId, partName, partInv, (int) partPrice, partMin, partMax, machineID);
+            Inventory.addPart(inhouse);
+        } else {
+            Part outsourced = new OutsourcedPart(partId, partName, partInv, (int) partPrice, partMin, partMax, partCompName);
+            Inventory.addPart(outsourced);
         }
+
+        Parent root = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 800, 600);
+        stage.setTitle("mainView");
+        stage.setScene(scene);
+        stage.show();
     }
 }
