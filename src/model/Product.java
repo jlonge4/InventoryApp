@@ -3,7 +3,6 @@ package model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.SQLOutput;
 
 public class Product  {
 
@@ -85,18 +84,22 @@ public class Product  {
             this.max = max;
         }
 
-        public void addAssociatedPart(Part part) {
-            associatedParts.add(part);
+        public static void addAssociatedPart(Part part) {
+            if (part != null) {
+                associatedParts.add(part);
+            }
+
         }
 
-        public boolean deleteAssociatedPart(Part selectedAssociatedPart) {
-            if (Part == selectedAssociatedPart) {
-                associatedParts.remove(Part);
+        public static boolean deleteAssociatedPart(Part selectedAssociatedPart) {
+            if (selectedAssociatedPart != null) {
+                associatedParts.remove(selectedAssociatedPart);
+                return true;
             }
-            System.out.println("Part not found");
             return false;
         }
-        public ObservableList getALlAsociatedParts() {
+
+        public static ObservableList getAllAssociatedParts() {
             return associatedParts;
         }
 }

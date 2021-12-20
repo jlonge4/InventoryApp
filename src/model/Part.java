@@ -24,6 +24,12 @@ public abstract class Part {
         this.max = max;
     }
 
+//    public static String idGenerator(String id) {
+//        int idEE = 0;
+//        idEE ++;
+//        return String.valueOf(idEE);
+//    }
+
     /**
      * @return the id
      */

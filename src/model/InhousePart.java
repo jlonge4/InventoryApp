@@ -9,7 +9,6 @@ public class InhousePart extends Part {
             this.machineID = machineID;
     }
 
-
     public int getMachineID() {
         return machineID;
     }
