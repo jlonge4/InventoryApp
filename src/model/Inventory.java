@@ -28,6 +28,16 @@ public class Inventory {
 ////      iterate through allProducts. to return by ID
 //        return p;
 //    }
+
+    public static void updatePart(int index, Part selectedPart) {
+//        do some stuff
+
+    }
+
+    public static void updateProduct(int index, Product selectedProduct) {
+//        do some stuff
+
+    }
     public static boolean deletePart(Part selectedPart) {
         if (selectedPart != null) {
             allParts.remove(selectedPart);

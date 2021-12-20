@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -8,12 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.InhousePart;
-import model.Inventory;
-import model.Part;
-import model.Product;
+import model.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,6 +31,13 @@ public class addProductView implements Initializable {
     public TableColumn associatedNameColumn;
     public TableColumn aInventoryColumn;
     public TableColumn aPriceColumn;
+    public Button toMainView;
+    public TextField newProdID;
+    public TextField newProdName;
+    public TextField newProdInv;
+    public TextField newProdPrice;
+    public TextField newProdMin;
+    public TextField newProdMax;
 
     private void addTestData() {
         InhousePart p = new InhousePart(1, "bolt", 3.00, 450, 0, 100, 01);
@@ -61,9 +67,10 @@ public class addProductView implements Initializable {
 
         addTestData();
     }
+
     public void toMainView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));
-        Stage stage = (Stage)((Button)actionEvent.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
         stage.setTitle("mainView");
         stage.setScene(scene);
@@ -79,4 +86,29 @@ public class addProductView implements Initializable {
         Part selectedAssociatedPart = (Part) AssociatedPartsTable.getSelectionModel().getSelectedItem();
         Product.deleteAssociatedPart(selectedAssociatedPart);
     }
+
+    @FXML
+    void addNewProductForm(ActionEvent event) throws Exception {
+
+        int prodId = Integer.parseInt(newProdID.getText());
+        String prodName = newProdName.getText();
+        int prodInv = Integer.parseInt(newProdInv.getText());
+        double prodPrice = Double.parseDouble(newProdPrice.getText());
+        int prodMin = Integer.parseInt(newProdMin.getText());
+        int prodMax = Integer.parseInt(newProdMax.getText());
+
+        Product product = new Product(prodId, prodName, prodInv, (int) prodPrice, prodMin, prodMax);
+        Inventory.addProduct(product);
+
+
+        Parent root = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 800, 600);
+        stage.setTitle("mainView");
+        stage.setScene(scene);
+        stage.show();
+    }
 }
+
+
+

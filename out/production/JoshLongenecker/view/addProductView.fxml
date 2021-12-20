@@ -20,13 +20,13 @@
       <Button layoutX="630.0" layoutY="218.0" mnemonicParsing="false" onAction="#onAddAssociatedPart" text="Add" />
       <Button layoutX="543.0" layoutY="401.0" mnemonicParsing="false" onAction="#onDeleteAssociatedPart" text="Delete" />
       <Button fx:id="toMainView" layoutX="604.0" layoutY="401.0" mnemonicParsing="false" onAction="#toMainView" text="Cancel" />
-      <Button layoutX="492.0" layoutY="401.0" mnemonicParsing="false" text="Save" />
-      <TextField disable="true" layoutX="55.0" layoutY="113.0" promptText="Auto Gen. / Disabled" />
-      <TextField layoutX="55.0" layoutY="156.0" />
-      <TextField layoutX="55.0" layoutY="196.0" />
-      <TextField layoutX="55.0" layoutY="230.0" />
-      <TextField layoutX="55.0" layoutY="266.0" prefHeight="25.0" prefWidth="67.0" />
-      <TextField layoutX="166.0" layoutY="266.0" prefHeight="25.0" prefWidth="61.0" />
+      <Button layoutX="492.0" layoutY="401.0" mnemonicParsing="false" onAction="#addNewProductForm" text="Save" />
+      <TextField fx:id="newProdID" layoutX="55.0" layoutY="113.0" />
+      <TextField fx:id="newProdName" layoutX="55.0" layoutY="156.0" />
+      <TextField fx:id="newProdInv" layoutX="55.0" layoutY="196.0" />
+      <TextField fx:id="newProdPrice" layoutX="55.0" layoutY="230.0" />
+      <TextField fx:id="newProdMin" layoutX="55.0" layoutY="266.0" prefHeight="25.0" prefWidth="67.0" />
+      <TextField fx:id="newProdMax" layoutX="166.0" layoutY="266.0" prefHeight="25.0" prefWidth="61.0" />
       <TextField layoutX="519.0" layoutY="47.0" />
       <TableView fx:id="PartsTable" layoutX="277.0" layoutY="78.0" prefHeight="135.0" prefWidth="391.0">
         <columns>
