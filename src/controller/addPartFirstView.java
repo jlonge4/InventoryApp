@@ -12,11 +12,11 @@ import model.InhousePart;
 import model.Inventory;
 import model.OutsourcedPart;
 import model.Part;
-import sun.text.DictionaryBasedBreakIterator;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class addPartFirstView implements Initializable {
 
@@ -67,11 +67,26 @@ public class addPartFirstView implements Initializable {
         System.out.println("machine id selected");
         return inhouseSelected;
     }
+    public int increaseCount(int count) {
+        count ++;
+        return count;
+    }
+
+    public int randomId() {
+        AtomicInteger randomId = new AtomicInteger(increaseCount(Inventory.getAllParts().size()));
+        Inventory.getAllParts().forEach((item) -> {
+            if (item.getId() == randomId.get()) {
+                randomId.addAndGet(1);
+            };
+
+        });
+        return randomId.get();
+    }
 
     @FXML
     void addNewPartForm(ActionEvent event) throws Exception {
 //    System.out.println(newPartCompName.getText());
-        int partId = Integer.parseInt(newID.getText());
+        int partId = randomId();
         String partName = newPartName.getText();
         int partInv = Integer.parseInt(newPartInv.getText());
         double partPrice = Double.parseDouble(newPartPrice.getText());

@@ -16,6 +16,7 @@ import model.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class addProductView implements Initializable {
@@ -45,6 +46,15 @@ public class addProductView implements Initializable {
         Product z = new Product(1, "saw", 300, 5, 10, 30);
         Inventory.addProduct(z);
 
+    }
+
+    public int randomId() {
+        Random random = new Random();
+        int randomId = random.nextInt(999);
+        if (Integer.parseInt(idColumn.getText()) == randomId) {
+            randomId += 1;
+        }
+        return randomId;
     }
 
     @Override
@@ -90,7 +100,7 @@ public class addProductView implements Initializable {
     @FXML
     void addNewProductForm(ActionEvent event) throws Exception {
 
-        int prodId = Integer.parseInt(newProdID.getText());
+        int prodId = randomId();
         String prodName = newProdName.getText();
         int prodInv = Integer.parseInt(newProdInv.getText());
         double prodPrice = Double.parseDouble(newProdPrice.getText());
