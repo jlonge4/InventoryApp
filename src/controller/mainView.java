@@ -1,14 +1,15 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.*;
+import javafx.scene.input.InputMethodEvent;
 import model.Inventory;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.InhousePart;
@@ -32,12 +33,21 @@ public class mainView implements Initializable {
     public TableColumn prodInvCol;
     public TableColumn prodPriceCol;
     public TableView ProductsTable;
+    public TextField partsSearch;
+    public Button partSearch;
 
     private static int modifyPartIndex;
     private static Part modifyPart = null;
+    private static Product modifyProduct = null;
+    private static int modifyProductIndex;
+
 
     public static Part getPart() {
         return modifyPart;
+    }
+
+    public static Product getProduct() {
+        return modifyProduct;
     }
 
     public static int partToModifyIndex() {
@@ -80,6 +90,8 @@ public class mainView implements Initializable {
     }
 
     public void toModifyProductView(ActionEvent actionEvent) throws IOException {
+        modifyProduct = (Product) ProductsTable.getSelectionModel().getSelectedItem();
+        modifyProductIndex = Inventory.getAllParts().indexOf(modifyProduct);
         Parent root = FXMLLoader.load(getClass().getResource("/view/modifyProductView.fxml"));
         Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
@@ -119,5 +131,52 @@ public class mainView implements Initializable {
     public void onDeleteProduct(ActionEvent actionEvent) {
         Product selectedProduct = (Product) ProductsTable.getSelectionModel().getSelectedItem();
         Inventory.deleteProduct(selectedProduct);
+    }
+
+    public void partSearch(ActionEvent actionEvent) {
+            if (isInt(partsSearch.getText())) {
+                int searchField = Integer.parseInt(partsSearch.getText());
+                int partIndex = -1;
+                if (Inventory.lookupPart(searchField) == -1) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Search Error");
+                    alert.setHeaderText("Part not found");
+                    alert.setContentText("The search term entered does not match any known parts.");
+                    alert.showAndWait();
+                } else {
+                    partIndex = Inventory.lookupPart(searchField);
+                    Part tempPart = Inventory.getAllParts().get(partIndex);
+                    ObservableList<Part> tempPartList = FXCollections.observableArrayList();
+                    tempPartList.add(tempPart);
+                    PartsTable.setItems(tempPartList);
+                }
+            } else {
+//            part = Inventory.lookupPart(searchField);
+//            Part tempPart = Inventory.getAllParts().get(partIndex);
+//            ObservableList<Part> tempPartList = FXCollections.observableArrayList();
+//            tempPartList.add(tempPart);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Search Error");
+                alert.setHeaderText("Part not found");
+                alert.setContentText("The search term entered does not match any known parts.");
+                alert.showAndWait();
+
+//                PartsTable.setItems(Inventory.lookupParts(partsSearch.getText()));
+            }
+        }
+
+    public static boolean isInt(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
+    }
+
+
+    public void partsSearch(ActionEvent actionEvent) {
+        PartsTable.setItems(Inventory.lookupParts(partsSearch.getText()));
     }
 }

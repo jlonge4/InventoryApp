@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class addProductView implements Initializable {
 
@@ -47,14 +48,20 @@ public class addProductView implements Initializable {
         Inventory.addProduct(z);
 
     }
+    public int increaseCount(int count) {
+        count ++;
+        return count;
+    }
 
     public int randomId() {
-        Random random = new Random();
-        int randomId = random.nextInt(999);
-        if (Integer.parseInt(idColumn.getText()) == randomId) {
-            randomId += 1;
-        }
-        return randomId;
+        AtomicInteger randomId = new AtomicInteger(increaseCount(Inventory.getAllProducts().size()));
+        Inventory.getAllProducts().forEach((item) -> {
+            if (item.getId() == randomId.get()) {
+                randomId.addAndGet(1);
+            };
+
+        });
+        return randomId.get();
     }
 
     @Override
@@ -108,8 +115,9 @@ public class addProductView implements Initializable {
         int prodMax = Integer.parseInt(newProdMax.getText());
 
         Product product = new Product(prodId, prodName, prodInv, (int) prodPrice, prodMin, prodMax);
+//        Part selectedAssociatedPart = (Part) AssociatedPartsTable.getSelectionModel().getSelectedItem();
+//        Product.addAssociatedPart(selectedAssociatedPart);
         Inventory.addProduct(product);
-
 
         Parent root = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();

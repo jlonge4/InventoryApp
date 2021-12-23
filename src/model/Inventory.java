@@ -19,15 +19,42 @@ public class Inventory {
         allProducts.add(Product);
     }
 
-//    public static Part lookupPart(int ID) {
-////      iterate through allParts. to return by ID
-//        return p;
-//    }
+    public static ObservableList<Part> lookupParts(String partName) {
+        ObservableList<Part> searchPartList = FXCollections.observableArrayList();
+        do {
+            for (int i = 0; i < allParts.size(); i++) {
+                partName = partName.toLowerCase();
+                if (partName.equals(allParts.get(i).getName().toLowerCase())) {
+                    Part searched = allParts.get(i);
+                    searchPartList.add(searched);
 
-    //    public static Product lookupProduct(int ID) {
-////      iterate through allProducts. to return by ID
-//        return p;
-//    }
+                }
+                return searchPartList;
+            }
+            return allParts;
+        } while (partName.length() > 0);
+    }
+
+
+
+    public static int lookupPart(int partId) {
+       boolean isFound = false;
+        int index = 0;
+            for (int i = 0; i < allParts.size(); i++) {
+                if (partId == allParts.get(i).getId()) {
+                    index = i;
+                    isFound = true;
+                }
+            }
+            if (isFound == true) {
+                return index;
+            }
+            else {
+                System.out.println("No parts found.");
+                return -1;
+            }
+
+    }
 
     public static void updatePart(int index, Part part) {
         allParts.set(index, part);
@@ -60,4 +87,5 @@ public class Inventory {
     public static ObservableList<Product> getAllProducts() {
         return allProducts;
     }
+
 }

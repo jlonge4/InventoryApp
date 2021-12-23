@@ -21,12 +21,12 @@
       <Button layoutX="507.0" layoutY="385.0" mnemonicParsing="false" text="Delete" />
       <Button fx:id="toMainView" layoutX="568.0" layoutY="385.0" mnemonicParsing="false" onAction="#toMainView" text="Cancel" />
       <Button layoutX="457.0" layoutY="385.0" mnemonicParsing="false" text="Save" />
-      <TextField disable="true" editable="false" layoutX="55.0" layoutY="113.0" promptText="Auto Gen. / Disabled" />
-      <TextField layoutX="55.0" layoutY="156.0" />
-      <TextField layoutX="55.0" layoutY="196.0" />
-      <TextField layoutX="55.0" layoutY="230.0" />
-      <TextField layoutX="55.0" layoutY="266.0" prefHeight="25.0" prefWidth="67.0" />
-      <TextField layoutX="166.0" layoutY="266.0" prefHeight="25.0" prefWidth="61.0" />
+      <TextField fx:id="prodID" disable="true" editable="false" layoutX="55.0" layoutY="113.0" promptText="Auto Gen. / Disabled" />
+      <TextField fx:id="prodName" layoutX="55.0" layoutY="156.0" />
+      <TextField fx:id="prodInv" layoutX="55.0" layoutY="196.0" />
+      <TextField fx:id="prodPrice" layoutX="55.0" layoutY="230.0" />
+      <TextField fx:id="prodMax" layoutX="55.0" layoutY="266.0" prefHeight="25.0" prefWidth="67.0" />
+      <TextField fx:id="prodMin" layoutX="166.0" layoutY="266.0" prefHeight="25.0" prefWidth="61.0" />
       <TextField layoutX="464.0" layoutY="47.0" />
       <TableView fx:id="PartsTable" layoutX="277.0" layoutY="78.0" prefHeight="124.0" prefWidth="343.0">
         <columns>
@@ -36,12 +36,12 @@
             <TableColumn fx:id="priceColumn" prefWidth="83.0" text="Price Per Unit" />
         </columns>
       </TableView>
-      <TableView layoutX="278.0" layoutY="234.0" prefHeight="145.0" prefWidth="343.0">
+      <TableView fx:id="prodAssociatedParts" layoutX="278.0" layoutY="234.0" prefHeight="145.0" prefWidth="343.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Part ID" />
-          <TableColumn prefWidth="75.0" text="Part Name" />
-            <TableColumn prefWidth="108.0" text="Inventory Level" />
-            <TableColumn prefWidth="82.0" text="Price Per Unit" />
+          <TableColumn fx:id="idColumnAP" prefWidth="75.0" text="Part ID" />
+          <TableColumn fx:id="nameColumnAP" prefWidth="75.0" text="Part Name" />
+            <TableColumn fx:id="invColumnAP" prefWidth="108.0" text="Inventory Level" />
+            <TableColumn fx:id="priceColumnAP" prefWidth="82.0" text="Price Per Unit" />
         </columns>
       </TableView>
       <Label layoutX="278.0" layoutY="51.0" text="All Parts" />

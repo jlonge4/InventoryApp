@@ -1,14 +1,12 @@
 package controller;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.*;
 import model.InhousePart;
@@ -82,4 +80,29 @@ public class modifyPartFirstView implements Initializable {
         companyName.setText("Company Name");
     }
 
+    @FXML
+    void saveModPart(ActionEvent event) throws Exception {
+        String partiDee = partId.getText();
+        int partID = Integer.parseInt(partiDee);
+        String newPartName = partName.getText();
+        int newPartInv = Integer.parseInt(partInv.getText());
+        double newPartPrice = Double.parseDouble(partPrice.getText());
+        int newPartMin = Integer.parseInt(partMin.getText());
+        int newPartMax = Integer.parseInt(partMax.getText());
+        String newPartCompName = companyName.getText();
+
+        if (inhouse.isSelected()) {
+            int machineID = Integer.parseInt(newPartCompName);
+            Part inhouse = new InhousePart(partID, newPartName, newPartInv, (int) newPartPrice, newPartMin, newPartMax, machineID);
+            Inventory.addPart(inhouse);
+        } else {
+            Part outsourced = new OutsourcedPart(partID, newPartName, newPartInv, (int) newPartPrice, newPartMin, newPartMax, newPartCompName);
+            Inventory.addPart(outsourced);
+        }
+        Parent modifyProductSave = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));
+        Scene scene = new Scene(modifyProductSave);
+        Stage window = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
 }
