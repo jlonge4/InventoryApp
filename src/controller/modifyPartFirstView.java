@@ -49,7 +49,8 @@ public class modifyPartFirstView implements Initializable {
             companyName.setText("Machine ID");
             companyText.setText(Integer.toString(((InhousePart) inhouse).getMachineID()));
 
-        }else {
+        } else {
+
             inhouse.setSelected(false);
             outsourced.setSelected(true);
             OutsourcedPart outsourced = (OutsourcedPart) part;
@@ -61,18 +62,8 @@ public class modifyPartFirstView implements Initializable {
             partInv.setText(Integer.toString(outsourced.getStock()));
             companyName.setText("Company Name");
             companyText.setText(outsourced.getCompanyName());
-
         }
     }
-
-//    public void modifyPartSave(ActionEvent event) throws IOException {
-//        String partName = partName.getText();
-//        String partInv = partInv.getText();
-//        String partPrice = partPrice.getText();
-//        String partMin = partMin.getText();
-//        String partMax = partMax.getText();
-//        String partcompName = companyName.getText();
-//    }
 
     public void toMainView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/mainView.fxml"));

@@ -1,7 +1,5 @@
 package controller;
 
-import com.sun.javafx.charts.Legend;
-import javafx.scene.input.MouseEvent;
 import model.Inventory;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,10 +12,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.InhousePart;
-import model.Inventory;
 import model.Part;
 import model.Product;
-import org.w3c.dom.ls.LSOutput;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,16 +22,11 @@ import java.util.ResourceBundle;
 
 public class mainView implements Initializable {
 
-    Inventory inv;
-
-
     public TableView PartsTable;
     public TableColumn idColumn;
     public TableColumn partNameColumn;
     public TableColumn inventoryColumn;
     public TableColumn priceColumn;
-
-
     public TableColumn prodIDcol;
     public TableColumn prodNameCol;
     public TableColumn prodInvCol;
@@ -43,10 +35,10 @@ public class mainView implements Initializable {
 
     private static int modifyPartIndex;
     private static Part modifyPart = null;
+
     public static Part getPart() {
         return modifyPart;
     }
-
 
     public static int partToModifyIndex() {
         return modifyPartIndex;
@@ -57,18 +49,14 @@ public class mainView implements Initializable {
         Inventory.addPart(p);
         Product z = new Product(1, "saw", 300, 5, 10, 30);
         Inventory.addProduct(z);
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("I am initialized");
 
-
-
         PartsTable.setItems(Inventory.getAllParts());
         ProductsTable.setItems(Inventory.getAllProducts());
-
 
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         partNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -80,7 +68,6 @@ public class mainView implements Initializable {
         prodInvCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         prodPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         addTestData();
-
     }
 
     public void toAddProductView(ActionEvent actionEvent) throws IOException {
@@ -110,42 +97,6 @@ public class mainView implements Initializable {
         stage.show();
     }
 
-//    public void toModifyPartFirstView(ActionEvent actionEvent) throws IOException {
-//        Parent root = FXMLLoader.load(getClass().getResource("/view/modifyPartFirstView.fxml"));
-//        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-//        Scene scene = new Scene(root, 325, 400);
-//        stage.setTitle("modifyPartFirstView");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-
-//    public void modifyPart(ActionEvent event) {
-//        try {
-//            Part selected = (Part) PartsTable.getSelectionModel().getSelectedItem();
-////            if (partInventory.isEmpty()) {
-////                errorWindow(1);
-////                return;
-////            }
-////            if (!partInventory.isEmpty() && selected == null) {
-////                errorWindow(2);
-////                return;
-////            } else {
-//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/modifyPartFirstView.fxml"));
-//                modifyPartFirstView controller = new modifyPartFirstView();
-//
-//                loader.setController(controller);
-//                Parent root = loader.load();
-//                Scene scene = new Scene(root);
-//                Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-//                stage.setScene(scene);
-//                stage.setResizable(false);
-//                stage.show();
-//
-//        } catch (IOException e) {
-//
-//        }
-//    }
-
     public void toModifyPartFirstView(ActionEvent event) throws IOException {
         modifyPart = (Part) PartsTable.getSelectionModel().getSelectedItem();
         modifyPartIndex = Inventory.getAllParts().indexOf(modifyPart);
@@ -169,6 +120,4 @@ public class mainView implements Initializable {
         Product selectedProduct = (Product) ProductsTable.getSelectionModel().getSelectedItem();
         Inventory.deleteProduct(selectedProduct);
     }
-
-
 }
