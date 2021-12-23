@@ -29,9 +29,8 @@ public class Inventory {
 //        return p;
 //    }
 
-    public static void updatePart(int index, Part selectedPart) {
-//        do some stuff
-
+    public static void updatePart(int index, Part part) {
+        allParts.set(index, part);
     }
 
     public static void updateProduct(int index, Product selectedProduct) {

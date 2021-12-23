@@ -59,7 +59,7 @@
                </effect></Label>
             <Button fx:id="addNewPartForm" layoutX="114.0" layoutY="305.0" mnemonicParsing="false" onAction="#addNewPartForm" text="Save" />
             <Button fx:id="mainView" layoutX="196.0" layoutY="305.0" mnemonicParsing="false" onAction="#toMainView" text="Cancel" />
-            <TextField fx:id="newID" layoutX="100.0" layoutY="61.0" prefHeight="0.0" prefWidth="149.0" />
+            <TextField fx:id="newID" disable="true" editable="false" layoutX="100.0" layoutY="61.0" prefHeight="0.0" prefWidth="149.0" promptText="Auto-Gen / Disabled" />
             <TextField fx:id="newPartName" layoutX="100.0" layoutY="105.0" prefHeight="25.0" prefWidth="149.0" />
             <TextField fx:id="newPartInv" layoutX="100.0" layoutY="148.0" />
             <TextField fx:id="newPartPrice" layoutX="129.0" layoutY="188.0" prefHeight="25.0" prefWidth="116.0" />

@@ -1,6 +1,8 @@
 package controller;
 
 import com.sun.javafx.charts.Legend;
+import javafx.scene.input.MouseEvent;
+import model.Inventory;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
@@ -23,6 +25,8 @@ import java.util.ResourceBundle;
 
 public class mainView implements Initializable {
 
+    Inventory inv;
+
 
     public TableView PartsTable;
     public TableColumn idColumn;
@@ -36,8 +40,17 @@ public class mainView implements Initializable {
     public TableColumn prodInvCol;
     public TableColumn prodPriceCol;
     public TableView ProductsTable;
-    
 
+    private static int modifyPartIndex;
+    private static Part modifyPart = null;
+    public static Part getPart() {
+        return modifyPart;
+    }
+
+
+    public static int partToModifyIndex() {
+        return modifyPartIndex;
+    }
 
     private void addTestData() {
         InhousePart p = new InhousePart(1, "bolt", 3.00, 450, 0, 100, 01);
@@ -50,6 +63,7 @@ public class mainView implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("I am initialized");
+
 
 
         PartsTable.setItems(Inventory.getAllParts());
@@ -96,13 +110,50 @@ public class mainView implements Initializable {
         stage.show();
     }
 
-    public void toModifyPartFirstView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/modifyPartFirstView.fxml"));
-        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 325, 400);
-        stage.setTitle("modifyPartFirstView");
-        stage.setScene(scene);
-        stage.show();
+//    public void toModifyPartFirstView(ActionEvent actionEvent) throws IOException {
+//        Parent root = FXMLLoader.load(getClass().getResource("/view/modifyPartFirstView.fxml"));
+//        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+//        Scene scene = new Scene(root, 325, 400);
+//        stage.setTitle("modifyPartFirstView");
+//        stage.setScene(scene);
+//        stage.show();
+//    }
+
+//    public void modifyPart(ActionEvent event) {
+//        try {
+//            Part selected = (Part) PartsTable.getSelectionModel().getSelectedItem();
+////            if (partInventory.isEmpty()) {
+////                errorWindow(1);
+////                return;
+////            }
+////            if (!partInventory.isEmpty() && selected == null) {
+////                errorWindow(2);
+////                return;
+////            } else {
+//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/modifyPartFirstView.fxml"));
+//                modifyPartFirstView controller = new modifyPartFirstView();
+//
+//                loader.setController(controller);
+//                Parent root = loader.load();
+//                Scene scene = new Scene(root);
+//                Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+//                stage.setScene(scene);
+//                stage.setResizable(false);
+//                stage.show();
+//
+//        } catch (IOException e) {
+//
+//        }
+//    }
+
+    public void toModifyPartFirstView(ActionEvent event) throws IOException {
+        modifyPart = (Part) PartsTable.getSelectionModel().getSelectedItem();
+        modifyPartIndex = Inventory.getAllParts().indexOf(modifyPart);
+        Parent modifyPartParent = FXMLLoader.load(getClass().getResource("/view/modifyPartFirstView.fxml"));
+        Scene modifyPartScene = new Scene(modifyPartParent);
+        Stage modifyPartStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        modifyPartStage.setScene(modifyPartScene);
+        modifyPartStage.show();
     }
 
     public void exitProgram(ActionEvent actionEvent) throws IOException {

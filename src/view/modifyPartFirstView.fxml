@@ -38,13 +38,13 @@
             <Label fx:id="companyName" layoutX="24.0" layoutY="269.0" text="Company Name" />
             <Button layoutX="114.0" layoutY="305.0" mnemonicParsing="false" text="Save" />
             <Button fx:id="toMain" layoutX="196.0" layoutY="305.0" mnemonicParsing="false" onAction="#toMainView" text="Cancel" />
-            <TextField disable="true" editable="false" layoutX="100.0" layoutY="61.0" prefHeight="0.0" prefWidth="149.0" />
-            <TextField layoutX="100.0" layoutY="105.0" prefHeight="25.0" prefWidth="149.0" />
-            <TextField layoutX="100.0" layoutY="148.0" />
-            <TextField layoutX="129.0" layoutY="188.0" prefHeight="25.0" prefWidth="116.0" />
-            <TextField layoutX="127.0" layoutY="265.0" prefHeight="25.0" prefWidth="139.0" />
-            <TextField layoutX="70.0" layoutY="227.0" prefHeight="25.0" prefWidth="71.0" />
-            <TextField layoutX="170.0" layoutY="227.0" prefHeight="25.0" prefWidth="92.0" />
+            <TextField fx:id="partId" disable="true" editable="false" layoutX="100.0" layoutY="61.0" prefHeight="0.0" prefWidth="149.0" />
+            <TextField fx:id="partName" layoutX="100.0" layoutY="105.0" prefHeight="25.0" prefWidth="149.0" />
+            <TextField fx:id="partInv" layoutX="100.0" layoutY="148.0" />
+            <TextField fx:id="partPrice" layoutX="129.0" layoutY="188.0" prefHeight="25.0" prefWidth="116.0" />
+            <TextField fx:id="companyText" layoutX="127.0" layoutY="265.0" prefHeight="25.0" prefWidth="139.0" />
+            <TextField fx:id="partMax" layoutX="70.0" layoutY="227.0" prefHeight="25.0" prefWidth="71.0" />
+            <TextField fx:id="partMin" layoutX="170.0" layoutY="227.0" prefHeight="25.0" prefWidth="92.0" />
          </children>
          <effect>
             <Lighting>
