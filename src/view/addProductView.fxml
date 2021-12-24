@@ -14,12 +14,12 @@
       <Label layoutX="16.0" layoutY="160.0" text="Name" />
       <Label layoutX="16.0" layoutY="200.0" text="Inv" />
       <Label layoutX="16.0" layoutY="234.0" text="Price" />
-      <Label layoutX="16.0" layoutY="270.0" text="Max" />
-      <Label layoutX="129.0" layoutY="270.0" text="Min" />
-      <Button layoutX="460.0" layoutY="47.0" mnemonicParsing="false" text="Search" />
+      <Label layoutX="139.0" layoutY="270.0" text="Max" />
+      <Label layoutX="22.0" layoutY="270.0" text="Min" />
+      <Button fx:id="partSearch" layoutX="460.0" layoutY="47.0" mnemonicParsing="false" onAction="#partSearch" text="Search" />
       <Button layoutX="630.0" layoutY="218.0" mnemonicParsing="false" onAction="#onAddAssociatedPart" text="Add" />
       <Button layoutX="543.0" layoutY="401.0" mnemonicParsing="false" onAction="#onDeleteAssociatedPart" text="Delete" />
-      <Button fx:id="toMainView" layoutX="604.0" layoutY="401.0" mnemonicParsing="false" onAction="#toMainView" text="Cancel" />
+      <Button fx:id="toMain" layoutX="604.0" layoutY="401.0" mnemonicParsing="false" onAction="#toMainView" text="Cancel" />
       <Button layoutX="492.0" layoutY="401.0" mnemonicParsing="false" onAction="#addNewProductForm" text="Save" />
       <TextField fx:id="newProdID" disable="true" editable="false" layoutX="55.0" layoutY="113.0" promptText="Auto-Gen / Disabled" />
       <TextField fx:id="newProdName" layoutX="55.0" layoutY="156.0" />
@@ -27,7 +27,7 @@
       <TextField fx:id="newProdPrice" layoutX="55.0" layoutY="230.0" />
       <TextField fx:id="newProdMin" layoutX="55.0" layoutY="266.0" prefHeight="25.0" prefWidth="67.0" />
       <TextField fx:id="newProdMax" layoutX="166.0" layoutY="266.0" prefHeight="25.0" prefWidth="61.0" />
-      <TextField layoutX="519.0" layoutY="47.0" />
+      <TextField fx:id="partsSearchText" layoutX="519.0" layoutY="47.0" onKeyTyped="#partSearchText" />
       <TableView fx:id="PartsTable" layoutX="277.0" layoutY="78.0" prefHeight="135.0" prefWidth="391.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="75.0" text="Part ID" />

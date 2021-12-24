@@ -45,11 +45,11 @@
                <effect>
                   <Blend />
                </effect></Label>
-            <Label layoutX="41.0" layoutY="231.0" text="Max">
+            <Label layoutX="168.0" layoutY="231.0" text="Max">
                <effect>
                   <Blend />
                </effect></Label>
-            <Label layoutX="144.0" layoutY="231.0" text="Min">
+            <Label layoutX="73.0" layoutY="231.0" prefHeight="15.0" prefWidth="22.0" text="Min">
                <effect>
                   <Blend />
                </effect></Label>
@@ -64,8 +64,8 @@
             <TextField fx:id="newPartInv" layoutX="100.0" layoutY="148.0" />
             <TextField fx:id="newPartPrice" layoutX="129.0" layoutY="188.0" prefHeight="25.0" prefWidth="116.0" />
             <TextField fx:id="newPartCompName" layoutX="127.0" layoutY="265.0" prefHeight="25.0" prefWidth="139.0" />
-            <TextField fx:id="newPartMax" layoutX="70.0" layoutY="227.0" prefHeight="25.0" prefWidth="71.0" />
-            <TextField fx:id="newPartMin" layoutX="170.0" layoutY="227.0" prefHeight="25.0" prefWidth="92.0" />
+            <TextField fx:id="newPartMax" layoutX="196.0" layoutY="227.0" prefHeight="25.0" prefWidth="71.0" />
+            <TextField fx:id="newPartMin" layoutX="105.0" layoutY="227.0" prefHeight="25.0" prefWidth="59.0" />
          </children>
          <effect>
             <Lighting>
